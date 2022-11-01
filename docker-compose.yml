@@ -1,0 +1,8 @@
+version: '3.5'
+
+services:
+  how_much_is_still_missing:
+    build:
+      context: ./dev
+    working_dir: /app
+    container_name: how_much_is_still_missing
