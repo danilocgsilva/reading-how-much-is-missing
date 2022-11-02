@@ -18,11 +18,8 @@ class ReadingHowMuchTest extends TestCase
     {
         $text = "a";
         $search = "a";
-
         $this->readingHowMuch->setFullText($text);
-        
         $result = $this->readingHowMuch->getHowMuch($search);
-
         $this->assertSame(1, $result[0]);
     }
 
@@ -30,11 +27,8 @@ class ReadingHowMuchTest extends TestCase
     {
         $text = "dan";
         $search = "dan";
-
         $this->readingHowMuch->setFullText($text);
-        
         $result = $this->readingHowMuch->getHowMuch($search);
-
         $this->assertSame(1, $result[0]);
     }
 
@@ -42,11 +36,8 @@ class ReadingHowMuchTest extends TestCase
     {
         $text = "John Dhoe";
         $search = "John";
-
         $this->readingHowMuch->setFullText($text);
-        
         $result = $this->readingHowMuch->getHowMuch($search);
-
         $this->assertSame(0.5, $result[0]);
     }
 
@@ -55,5 +46,14 @@ class ReadingHowMuchTest extends TestCase
         $this->expectException(ReadingHowMuchException::class);
         $search = "John";
         $this->readingHowMuch->getHowMuch($search);
+    }
+
+    public function testGetHowMuch4(): void
+    {
+        $text = "Hermes Lennon Mathians";
+        $search = "Lenno";
+        $this->readingHowMuch->setFullText($text);
+        $result = $this->readingHowMuch->getHowMuch($search);
+        $this->assertSame(0.6, $result[0]);
     }
 }
