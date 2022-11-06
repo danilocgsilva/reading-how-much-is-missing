@@ -17,8 +17,18 @@ class ReadingHowMuch
     public function getHowMuch(string $terms): array
     {
         $this->checkException();
-        $noSpaces = str_replace(" ", "", $this->fullText);
-        return [ strlen($terms) / strlen($noSpaces) ];
+        $results = [];
+
+        $analysingSection = $this->fullText;
+        $backStringCount = 0;
+        while (($iterationSearchPosition = strpos($analysingSection, $terms)) !== false) {
+            $cutAnalisingPosition = strlen($terms) + $iterationSearchPosition;
+            $results[] = ($backStringCount + $cutAnalisingPosition) / strlen($this->fullText);
+            $analysingSection = substr($analysingSection, $cutAnalisingPosition);
+            $backStringCount =+ $iterationSearchPosition + strlen($terms);
+        }
+
+        return $results;
     }
 
     private function checkException(): void
