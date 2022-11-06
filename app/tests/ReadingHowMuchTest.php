@@ -63,7 +63,6 @@ class ReadingHowMuchTest extends TestCase
         $search = "fox";
         $this->readingHowMuch->setFullText($text);
         $result = $this->readingHowMuch->getHowMuch($search);
-        var_dump($result);
         $this->assertSame("0.29", substr($result[0], 0, 4));
         $this->assertSame("0.68", substr($result[1], 0, 4));
     }
@@ -74,7 +73,6 @@ class ReadingHowMuchTest extends TestCase
         $search = "Louis";
         $this->readingHowMuch->setFullText($text);
         $result = $this->readingHowMuch->getHowMuch($search);
-        var_dump($result);
         $this->assertSame("0.13", substr($result[0], 0, 4));
         $this->assertSame("0.35", substr($result[1], 0, 4));
         $this->assertSame("0.85", substr($result[2], 0, 4));

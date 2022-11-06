@@ -25,7 +25,7 @@ class ReadingHowMuch
             $cutAnalisingPosition = strlen($terms) + $iterationSearchPosition;
             $results[] = ($backStringCount + $cutAnalisingPosition) / strlen($this->fullText);
             $analysingSection = substr($analysingSection, $cutAnalisingPosition);
-            $backStringCount =+ $iterationSearchPosition + strlen($terms);
+            $backStringCount += $iterationSearchPosition + strlen($terms);
         }
 
         return $results;
